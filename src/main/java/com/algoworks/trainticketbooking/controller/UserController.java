@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algoworks.trainticketbooking.dto.RegisterRequest;
-import com.algoworks.trainticketbooking.entity.User;
+import com.algoworks.trainticketbooking.dto.UserResponse;
 import com.algoworks.trainticketbooking.service.UserService;
 
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public User registerUser(@RequestBody @Valid RegisterRequest request) {
+	public UserResponse registerUser(@RequestBody @Valid RegisterRequest request) {
 		return userService.registerUser(request);
 	}
 }

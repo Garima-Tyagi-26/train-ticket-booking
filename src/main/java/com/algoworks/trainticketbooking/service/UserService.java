@@ -3,6 +3,7 @@ package com.algoworks.trainticketbooking.service;
 import org.springframework.stereotype.Service;
 
 import com.algoworks.trainticketbooking.dto.RegisterRequest;
+import com.algoworks.trainticketbooking.dto.UserResponse;
 import com.algoworks.trainticketbooking.entity.Role;
 import com.algoworks.trainticketbooking.entity.User;
 import com.algoworks.trainticketbooking.exception.EmailAlreadyExistsException;
@@ -17,21 +18,29 @@ public class UserService {
 		this.userRepository = userRepository;
 	}
 	
-	public User registerUser(RegisterRequest request) {
+	public UserResponse registerUser(RegisterRequest request) {
 		
 		if(userRepository.existsByEmail(request.getEmail())) {
 			throw new EmailAlreadyExistsException("Email Already Exists");
 		}
 			
 		User user = new User(); 
-		
-		user.setName(request.getEmail());
+		user.setName(request.getName());
 		user.setEmail(request.getEmail());
 		user.setPassword(request.getPassword());
 		user.setPhone(request.getPhone());
 		user.setRole(Role.USER);
 		
-		return userRepository.save(user);
+		User savedUser = userRepository.save(user);
+		
+		UserResponse response = new UserResponse();
+		response.setId(savedUser.getId());
+		response.setName(savedUser.getName());
+		response.setEmail(savedUser.getEmail());
+		response.setPhone(savedUser.getPhone());
+		response.setRole(savedUser.getRole());
+		
+		return response;
 	}
 	
 }
