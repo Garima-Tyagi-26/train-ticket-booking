@@ -1,6 +1,6 @@
 package com.algoworks.trainticketbooking.controller;
 
-import com.algoworks.trainticketbooking.service.UserService;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,12 +21,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping("/trains")
 public class TrainController {
 
-	private final UserService userService;
 	private final TrainService trainService;
 
-	public TrainController(TrainService trainService, UserService userService) {
+	public TrainController(TrainService trainService) {
 		this.trainService = trainService;
-		this.userService = userService;
 	}
 	
 	@PostMapping
@@ -55,8 +53,12 @@ public class TrainController {
 	}
 	
 	@GetMapping("/search")
-	public List<Train> searchTrain(@RequestParam String source, @RequestParam String destination) {
-		return trainService.searchTrain(source, destination);
+	public List<Train> searchTrain(
+	        @RequestParam String source,
+	        @RequestParam String destination,
+	        @RequestParam LocalDate journeyDate) {
+
+	    return trainService.searchTrains(source, destination, journeyDate);
 	}
 	
 }

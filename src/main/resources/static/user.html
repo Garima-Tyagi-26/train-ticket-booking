@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard - Train Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <h1>🚆 Train Ticket Booking</h1>
+
+        <h2>Welcome, User!</h2>
+
+        <!-- Train Search -->
+        <section>
+            <h3>Search Trains</h3>
+
+            <input type="text" id="source" placeholder="Source">
+            <input type="text" id="destination" placeholder="Destination">
+            <input type="date" id="journeyDate">
+
+            <button onclick="searchTrains()">Search Trains</button>
+        </section>
+
+        <!-- Search Results -->
+        <section>
+            <h3>Available Trains</h3>
+
+            <div id="trainResults"></div>
+        </section>
+
+        <!-- My Bookings -->
+        <section>
+            <h3>My Bookings</h3>
+
+            <button onclick="loadBookings()">View My Bookings</button>
+
+            <div id="bookingResults"></div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

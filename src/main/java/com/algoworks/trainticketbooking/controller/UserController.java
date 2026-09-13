@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.algoworks.trainticketbooking.dto.LoginRequest;
+import com.algoworks.trainticketbooking.dto.LoginResponse;
 import com.algoworks.trainticketbooking.dto.RegisterRequest;
 import com.algoworks.trainticketbooking.dto.UserResponse;
 import com.algoworks.trainticketbooking.service.UserService;
@@ -24,5 +26,10 @@ public class UserController {
 	@PostMapping
 	public UserResponse registerUser(@RequestBody @Valid RegisterRequest request) {
 		return userService.registerUser(request);
+	}
+	
+	@PostMapping("/login")
+	public LoginResponse loginUser(@RequestBody LoginRequest request) {
+	    return userService.loginUser(request);
 	}
 }

@@ -1,6 +1,7 @@
 package com.algoworks.trainticketbooking.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
@@ -18,6 +19,7 @@ public class Train {
 	private String trainName;
 	private String source;
 	private String destination;
+	private LocalDate journeyDate;
 	private LocalTime departureTime;
     private LocalTime arrivalTime;
     private Integer totalSeats;
@@ -26,21 +28,21 @@ public class Train {
     
     public Train() {}
 
-	public Train(Long id, String trainNumber, String trainName, String source, String destination,
-			LocalTime departureTime, LocalTime arrivalTime, Integer totalSeats, Integer availableSeats,
-			BigDecimal fare) {
-		super();
-		this.id = id;
-		this.trainNumber = trainNumber;
-		this.trainName = trainName;
-		this.source = source;
-		this.destination = destination;
-		this.departureTime = departureTime;
-		this.arrivalTime = arrivalTime;
-		this.totalSeats = totalSeats;
-		this.availableSeats = availableSeats;
-		this.fare = fare;
-	}
+//	public Train(Long id, String trainNumber, String trainName, String source, String destination,
+//			LocalTime departureTime, LocalTime arrivalTime, Integer totalSeats, Integer availableSeats,
+//			BigDecimal fare) {
+//		super();
+//		this.id = id;
+//		this.trainNumber = trainNumber;
+//		this.trainName = trainName;
+//		this.source = source;
+//		this.destination = destination;
+//		this.departureTime = departureTime;
+//		this.arrivalTime = arrivalTime;
+//		this.totalSeats = totalSeats;
+//		this.availableSeats = availableSeats;
+//		this.fare = fare;
+//	}
 
 	public Long getId() {
 		return id;
@@ -80,6 +82,14 @@ public class Train {
 
 	public void setDestination(String destination) {
 		this.destination = destination;
+	}
+
+	public LocalDate getJourneyDate() {
+		return journeyDate;
+	}
+
+	public void setJourneyDate(LocalDate journeyDate) {
+		this.journeyDate = journeyDate;
 	}
 
 	public LocalTime getDepartureTime() {

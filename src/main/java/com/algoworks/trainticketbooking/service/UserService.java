@@ -2,6 +2,8 @@ package com.algoworks.trainticketbooking.service;
 
 import org.springframework.stereotype.Service;
 
+import com.algoworks.trainticketbooking.dto.LoginRequest;
+import com.algoworks.trainticketbooking.dto.LoginResponse;
 import com.algoworks.trainticketbooking.dto.RegisterRequest;
 import com.algoworks.trainticketbooking.dto.UserResponse;
 import com.algoworks.trainticketbooking.entity.Role;
@@ -41,6 +43,23 @@ public class UserService {
 		response.setRole(savedUser.getRole());
 		
 		return response;
+	}
+	
+	public LoginResponse loginUser(LoginRequest request) {
+
+	    User user = userRepository.findByEmail(request.getEmail())
+	            .orElseThrow(() -> new RuntimeException("Invalid email or password"));
+
+	    if (!user.getPassword().equals(request.getPassword())) {
+	        throw new RuntimeException("Invalid email or password");
+	    }
+
+	    return new LoginResponse(
+	            user.getId(),
+	            user.getName(),
+	            user.getEmail(),
+	            user.getRole().name()
+	    );
 	}
 	
 }

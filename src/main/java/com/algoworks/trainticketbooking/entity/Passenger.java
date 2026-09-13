@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Passenger {
@@ -24,6 +26,10 @@ public class Passenger {
 		this.age = age;
 		this.gender = gender;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "booking_id")
+	private Booking booking;
 
 	public Long getId() {
 		return id;
@@ -55,6 +61,14 @@ public class Passenger {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
 	}
 	
 	

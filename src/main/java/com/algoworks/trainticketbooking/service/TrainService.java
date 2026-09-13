@@ -1,5 +1,6 @@
 package com.algoworks.trainticketbooking.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -53,8 +54,13 @@ public class TrainService {
 		trainRepository.deleteById(id);
 	}
 	
-	public List<Train> searchTrain(String source, String destination){
-		return trainRepository.findBySourceIgnoreCaseAndDestinationIgnoreCase(source, destination);
+	public List<Train> searchTrains(
+	        String source,
+	        String destination,
+	        LocalDate journeyDate) {
+
+	    return trainRepository.findBySourceIgnoreCaseAndDestinationIgnoreCaseAndJourneyDate(
+	                                                       source, destination, journeyDate);
 	}
 	
 }
