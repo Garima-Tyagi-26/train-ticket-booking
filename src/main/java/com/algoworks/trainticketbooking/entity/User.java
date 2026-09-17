@@ -1,5 +1,7 @@
 package com.algoworks.trainticketbooking.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,21 +19,23 @@ public class User {
 	private String email;
 	private String password;
 	private String phone;
+	private String resetPasswordToken;
+    private LocalDateTime resetPasswordTokenExpiry;
 	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
 	public User() {}
 	
-	public User(Long id, String name, String email, String password, String phone, Role role) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.phone = phone;
-		this.role = role;
-	}
+//	public User(Long id, String name, String email, String password, String phone, Role role) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.password = password;
+//		this.phone = phone;
+//		this.role = role;
+//	}
 
 	public Long getId() {
 		return id;
@@ -79,6 +83,22 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+
+	public LocalDateTime getResetPasswordTokenExpiry() {
+		return resetPasswordTokenExpiry;
+	}
+
+	public void setResetPasswordTokenExpiry(LocalDateTime resetPasswordTokenExpiry) {
+		this.resetPasswordTokenExpiry = resetPasswordTokenExpiry;
 	}
 	
 	
