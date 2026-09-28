@@ -2,23 +2,12 @@ package com.algoworks.trainticketbooking.dto;
 
 import java.util.List;
 
-import com.algoworks.trainticketbooking.entity.Passenger;
-
 public class BookingRequest {
 
-	private Long userId;
 	private Long trainId;
-	private List<Passenger> passengers;
-	
+	private List<PassengerRequest> passengers;
+
 	public BookingRequest () {}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 
 	public Long getTrainId() {
 		return trainId;
@@ -28,13 +17,15 @@ public class BookingRequest {
 		this.trainId = trainId;
 	}
 
-	public List<Passenger> getPassengers() {
+	public List<PassengerRequest> getPassengers() {
 		return passengers;
 	}
 
-	public void setPassengers(List<Passenger> passengers) {
+	public void setPassengers(List<PassengerRequest> passengers) {
 		this.passengers = passengers;
 	}
+
 	
+
 	
 }

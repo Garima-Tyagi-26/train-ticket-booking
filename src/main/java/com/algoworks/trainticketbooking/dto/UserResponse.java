@@ -8,7 +8,7 @@ public class UserResponse {
 	private String name;
 	private String email;
 	private String phone;
-	private Role role;
+	//private Role role;
 	
 	public UserResponse() {}
 
@@ -44,13 +44,13 @@ public class UserResponse {
 		this.phone = phone;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
+//	public Role getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(Role role) {
+//		this.role = role;
+//	}
 	
 	
 }

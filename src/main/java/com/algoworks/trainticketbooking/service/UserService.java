@@ -56,7 +56,6 @@ public class UserService {
 		response.setName(savedUser.getName());
 		response.setEmail(savedUser.getEmail());
 		response.setPhone(savedUser.getPhone());
-		response.setRole(savedUser.getRole());
 		
 		return response;
 	}
@@ -102,18 +101,18 @@ public class UserService {
 	    response.setName(user.getName());
 	    response.setEmail(user.getEmail());
 	    response.setPhone(user.getPhone());
-	    response.setRole(user.getRole());
+	   // response.setRole(user.getRole());
 
 	    return response;
 	}
 	
 	// method for the user to update their details
-	public UserResponse updateUser(Long id, UpdateUserRequest request, Authentication authentication) {
+	public UserResponse updateUser(UpdateUserRequest request, Authentication authentication) {
 
-	    User user = userRepository.findById(id)
-	               .orElseThrow(() -> new RuntimeException("User not found"));
+		   String loggedInEmail = authentication.getName();
 
-	    String loggedInEmail = authentication.getName();
+		    User user = userRepository.findByEmail(loggedInEmail)
+		            .orElseThrow(() -> new RuntimeException("User not found"));
 
 	    // User can update only their own profile
 	    if (!user.getEmail().equals(loggedInEmail)) {
@@ -122,7 +121,7 @@ public class UserService {
 
 	    // Check if the new email is already used by another user
 	    if (request.getEmail() != null
-	            && userRepository.existsByEmailAndIdNot(request.getEmail(), id)) {
+	            && userRepository.existsByEmail(request.getEmail())) {
 
 	        throw new EmailAlreadyExistsException(
 	                "Unable to process update request");
@@ -149,7 +148,7 @@ public class UserService {
 	    response.setName(updatedUser.getName());
 	    response.setEmail(updatedUser.getEmail());
 	    response.setPhone(updatedUser.getPhone());
-	    response.setRole(updatedUser.getRole());
+	   // response.setRole(updatedUser.getRole());
 
 	    return response;
 	}

@@ -126,11 +126,11 @@ public class UserController {
 		    @ApiResponse(responseCode = "403", description = "Access denied"),
 		    @ApiResponse(responseCode = "409", description = "Unable to process update request")
 		})
-	@PutMapping("/{id}")
-	public UserResponse updateUser(@PathVariable Long id, @RequestBody  @Valid UpdateUserRequest request, 
+	@PutMapping("/me")
+	public UserResponse updateUser(@RequestBody  @Valid UpdateUserRequest request, 
 			                                                    Authentication authentication) {
 
-	    return userService.updateUser(id, request, authentication);
+	    return userService.updateUser(request, authentication);
 	}
 	
 	

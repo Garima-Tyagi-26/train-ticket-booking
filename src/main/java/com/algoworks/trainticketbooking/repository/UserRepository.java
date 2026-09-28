@@ -12,7 +12,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
 	
 	Optional<User> findByEmail(String email); //the actual User whose email is this.
 	
-	boolean existsByEmailAndIdNot(String email, Long id); //Does this email belong to someone other than this user?
+//	boolean existsByEmail(String email); //Does this email belong to someone other than this user?
 	
 	Optional<User> findByResetPasswordToken(String token); //user requested for forgot password
 }
