@@ -1,7 +1,5 @@
 package com.algoworks.trainticketbooking.dto;
 
-import com.algoworks.trainticketbooking.entity.Role;
-
 public class UserResponse {
 
 	private Long id;

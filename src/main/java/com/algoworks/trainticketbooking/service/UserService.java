@@ -153,6 +153,7 @@ public class UserService {
 	    return response;
 	}
 	
+	
 	//method for access their own profile
 	public UserResponse getMyProfile(String email) {
 
@@ -168,6 +169,7 @@ public class UserService {
 
 	    return response;
 	}
+	
 	
 	//method to change current password for logged-in user
 	public void changePassword(ChangePasswordRequest request, Authentication authentication) {
